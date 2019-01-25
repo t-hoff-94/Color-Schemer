@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import chroma from 'chroma-js'
-import Container from './styles/Container'
+import SingleColorStyles from './styles/SingleColorStyles'
 import { getRgba, getCompColor } from './helpers/colorHelpers'
 
 let darkenButtons = [];
@@ -50,7 +50,9 @@ class SingleColor extends Component {
 
   render() {
     return (
-      <Container color={this.state.color} compColor={this.state.complementaryColor} className="App">
+      <SingleColorStyles
+        color={this.state.color} compColor={this.state.complementaryColor}
+      >
         <h1>Color</h1>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -88,7 +90,7 @@ class SingleColor extends Component {
             </button>)}
           </div>
         </div>
-      </Container>
+      </SingleColorStyles>
     );
   }
 }

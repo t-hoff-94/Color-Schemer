@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import chroma from 'chroma-js'
-import Container from './styles/Container'
+import styled from 'styled-components'
 import SingleColor from './components/SingleColor'
+import ColorSlider from './components/ColorSlider'
 
+const ContainerStyle = styled.div`
+  background-color: #e0e0e0;
+  min-height: 100vh;
+`;
 
 class App extends Component {
   render() {
     return (
+      <ContainerStyle>
       <SingleColor />
+      <ColorSlider />
+      </ContainerStyle>
     );
   }
 }

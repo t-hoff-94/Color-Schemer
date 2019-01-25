@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import chroma from 'chroma-js'
 
-const Container = styled.div`
-  background: #444;
+const SingleColorStyles = styled.div`
+  background: #000;
   color: #fff;
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-top: 55px;
-  min-height: 100vh;
+  padding: 55px 0 55px 0;
   form {
     align-items: center;
     display: flex;
@@ -77,4 +76,4 @@ const Container = styled.div`
 
 
 
-export default Container
+export default SingleColorStyles
