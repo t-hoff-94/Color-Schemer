@@ -9,22 +9,6 @@ text-align: center;
   background: linear-gradient(to right, hsla(0,0%,100%,0) 0%, hsla(0,0%,0%,1) 100%);
 }
 
-.slider-lightness {
-  background: linear-gradient(to right,
-    hsla(0,0%,0%,1) 0%,
-    hsla(
-      ${props => props.hue},
-      ${props => `${props.saturation}%`},
-      ${props => `${props.lightness}%`},1) 50%,
-    hsla(0,0%,100%,${props => `${props.alpha}%`}) 100%);
-}
-
-.slider-saturation {
-  background: linear-gradient(to right,
-    hsla(0,0%,0%,1) 0%,
-    hsla(${props => props.hue},100%,50%,1) 100%);
-}
-
 .slider-hue {
   background: -webkit-linear-gradient(left,
     hsla(0, ${props => `${props.saturation}%`},
@@ -112,7 +96,7 @@ text-align: center;
   transition: opacity .2s;
   width: 100%;
   max-width: 444px;
-  margin: 10px auto;
+  margin: 10px;
 }
 
 .slider::-webkit-slider-thumb {
@@ -129,14 +113,29 @@ text-align: center;
   height: 25px;
   cursor: pointer;
 }
+.slide-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .slider-text-input {
+    font-size: 22px;
+    text-align: center;
+    width: 44px;
+  }
+}
 `;
 
 class ColorSlider extends Component {
   state = {
-    hueValue: 0,
+    hueValue: 1,
     saturationValue: 100,
     lightnessValue: 50,
     alphaValue: 100,
+    black: '#000'
+  }
+
+  handleTextInput = (e) => {
+    console.log(e.target.value);
   }
 
   handleChange = (e) => {
@@ -156,31 +155,70 @@ class ColorSlider extends Component {
         alpha={this.state.alphaValue}
       >
       <h1>HSL Slider</h1>
+      <h3>hsl({this.state.hueValue},{this.state.saturationValue},{this.state.lightnessValue})</h3>
       <div className="slide-container">
-        <input
-          type='range'
-          min='1' max='360'
-          className='slider slider-hue'
-          name='hueValue'
-          value={this.state.hueValue}
-          onChange={this.handleChange}
-        />
-        <input
-          type='range'
-          min='1' max='100'
-          className='slider slider-saturation'
-          name='saturationValue'
-          value={this.state.saturationValue}
-          onChange={this.handleChange}
-        />
-        <input
-          type='range'
-          min='1' max='100'
-          className='slider slider-lightness'
-          name='lightnessValue'
-          value={this.state.lightnessValue}
-          onChange={this.handleChange}
-        />
+        <div className='slide-row'>
+          <input
+            type='range'
+            min='1' max='360'
+            className='slider slider-hue'
+            name='hueValue'
+            value={this.state.hueValue}
+            onChange={this.handleChange}
+          />
+          <input
+            name='hueValue'
+            value={this.state.hueValue}
+            onChange={this.handleChange}
+            className='slider-text-input'
+            type='text'
+          />
+        </div>
+        <div className='slide-row'>
+          <input
+            style={{
+              background: `linear-gradient(to right,
+                hsla(0,0%,${this.state.lightnessValue}%,1) 0%,
+                hsla(${this.state.hueValue},100%,${this.state.lightnessValue}%,1) 100%)`
+            }}
+            type='range'
+            min='1' max='100'
+            className='slider slider-saturation'
+            name='saturationValue'
+            value={this.state.saturationValue}
+            onChange={this.handleChange}
+          />
+          <input
+            name='saturationValue'
+            value={this.state.saturationValue}
+            onChange={this.handleChange}
+            className='slider-text-input'
+            type='text'
+          />
+        </div>
+        <div className='slide-row'>
+          <input
+            style = {{
+              background: `linear-gradient(to right,
+                hsla(0,${this.state.saturationValue}%,0%,1) 0%,
+                hsla(${this.state.hueValue},${this.state.saturationValue}%,50%,1) 50%,
+                hsla(0,${this.state.saturationValue}%,100%,1) 100%)`
+            }}
+            type='range'
+            min='1' max='100'
+            className='slider slider-lightness'
+            name='lightnessValue'
+            value={this.state.lightnessValue}
+            onChange={this.handleChange}
+          />
+          <input
+            name='lightnessValue'
+            value={this.state.lightnessValue}
+            onChange={this.handleChange}
+            className='slider-text-input'
+            type='text'
+          />
+        </div>
         {/* <input
           type='range'
           min='1' max='100'
