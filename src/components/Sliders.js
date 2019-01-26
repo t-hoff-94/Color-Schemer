@@ -4,7 +4,7 @@ const Sliders = props => {
   const { hueValue, saturationValue, lightnessValue, alphaValue, handleInput } = props;
   return (
     <div>
-      <h1>colors are cool</h1>
+      <h1>HSL Color Picker</h1>
       <p>hsl({hueValue},{saturationValue},{lightnessValue})</p>
       <div className='slide-row'>
         <div className='checker-ctr'>
@@ -156,7 +156,7 @@ const Sliders = props => {
             style={{
               backgroundImage: `linear-gradient(to right,
               hsla(0,0%,${lightnessValue}%, 0%) 0%,
-              hsla(${hueValue},${saturationValue}%,${lightnessValue}%,${alphaValue}%) 100%)`,
+              hsla(${hueValue},${saturationValue}%,${lightnessValue}%,100%) 100%)`,
               border: '1px solid #999',
             }}
             type='range'

@@ -12,8 +12,8 @@ class App extends Component {
   render() {
     return (
       <ContainerStyle>
-      <SingleColor />
       <ColorSlider />
+      <SingleColor />
       </ContainerStyle>
     );
   }
