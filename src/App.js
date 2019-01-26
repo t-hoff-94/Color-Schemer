@@ -4,7 +4,7 @@ import SingleColor from './components/SingleColor'
 import ColorSlider from './components/ColorSlider'
 
 const ContainerStyle = styled.div`
-  background-color: #666;
+  background-color: #333;
   min-height: 100vh;
 `;
 
