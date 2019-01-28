@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const SliderStyles = styled.div`
 color: #fff;
-padding: 15px 15px 155px 15px;
+padding: 155px 15px 155px 15px;
 text-align: center;
 
 .slider {
@@ -21,7 +21,8 @@ text-align: center;
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  border: 2px solid #fff;
+  background: rgba(0,0,0,0);
+  border: 2px solid #000;
   border-radius: 5px;
   width: 11px;
   height: 25px;
@@ -35,13 +36,17 @@ text-align: center;
   cursor: pointer;
 }
 .checker-ctr {
+  background: #999;
   background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
   background-size: 5px 5px;
   border-radius: 5px;
-  ${'' /* background: yellow; */}
   display: flex;
-  margin: 15px;
+  margin: 15px 15px 15px 0;
   width: 444px;
+  input {
+    border: 1px solid #999;
+    margin: 0;
+  }
 }
 .slide-row {
   display: flex;
