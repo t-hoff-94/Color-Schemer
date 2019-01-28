@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import SingleColor from './components/SingleColor'
+// import SingleColor from './components/SingleColor'
 import ColorSlider from './components/ColorSlider'
 
 const ContainerStyle = styled.div`
@@ -12,7 +12,6 @@ class App extends Component {
     return (
       <ContainerStyle>
         <ColorSlider />
-        <SingleColor />
       </ContainerStyle>
     );
   }

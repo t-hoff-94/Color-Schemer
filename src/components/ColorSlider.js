@@ -14,10 +14,13 @@ function getHexCode(color) {
   const s = parseFloat(hsla.s) / 100;
   const l = parseFloat(hsla.l) / 100;
   const a = parseFloat(hsla.a) / 100;
+  // const rawChroma = chroma(hsla.h, s, l, 'hsl');
+  const blackContrast = chroma.contrast(chroma(hsla.h, s, l, 'hsl'), '#000') > 4.5;
   const cmykColors = chroma(hsla.h, s, l, 'hsl').cmyk()
   const hexCode = chroma(hsla.h, s, l, 'hsl').hex()
   const rgbaColors = chroma(hsla.h, s, l, a, 'hsl').rgba()
   return {
+    blackContrast,
     cmykColors,
     hexCode,
     rgbaColors
@@ -31,9 +34,10 @@ class ColorSlider extends Component {
     lightnessValue: 50,
     alphaValue: 100,
     modeOptions: {
-      hexCode: `#fff`,
-      cmykColors: [0,0,0,5],
-      rgbaColors: [8,8,6,6],
+      hexCode: `#4400ff`,
+      cmykColors: [.7,1,0,0],
+      rgbaColors: [68,0,255,1],
+      blackContrast: ''
     },
   }
 
